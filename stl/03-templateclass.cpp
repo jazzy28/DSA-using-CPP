@@ -11,7 +11,7 @@ class Pair
 {
 public:
     T first; // variable 1 of type T
-    U second; // variable 2 pf type U
+    U second; // variable 2 of type U
     Pair(){}; //constructor
     Pair(T x, U y){ //variable of type T:  x and type U: y
     // user defined constructor
