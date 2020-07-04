@@ -5,7 +5,7 @@ template<typename T>
 T addition(T x, T y){ 
     return x + y;
 }
-// to define pair of 2 different datatypes or same of variables, we can creat a class
+// to define pair of 2 different datatypes or same of variables, we can create a class
 template<typename T, typename U> //will take 2 different datatypes
 class Pair
 {
