@@ -1,6 +1,68 @@
+
+
+#include <iostream>
+//Inserting a node at the tail
+//node: data, ptr to the next node
+
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+    
+    node(int val){
+        data = val;
+        next = NULL;
+    }
+    
+};
+
+void insertAtTail(node* &head, int val){ //traversal will be from head
+    node* n = new node(val);
+    
+    if(head == NULL){
+        head = n;
+        return;
+    }
+    
+    node* temp = head; //iterator
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+    temp->next = n;
+}
+
 void deleteAtHead(node* &head){
-  node* todelete = head;
-  head = head->next;
-  
-  delete todelete;
+    node* todelete = head;
+    
+    head = head->next;
+    
+    delete todelete;
+}
+
+//display
+void display(node* head){//by value
+    node* temp = head; //iterator again
+    while(temp!=NULL){
+        cout<<temp->data<<"->"; //printing temp ka data
+        temp = temp->next;
+    }
+    cout<<"NULL"<<endl;
+}
+
+int main()
+{
+    node* head = NULL;//empty ll
+    insertAtTail(head, 1);
+    insertAtTail(head, 2);
+    insertAtTail(head, 3);
+    insertAtTail(head, 4);
+    display(head);
+    //deletion(head, 3);
+    deleteAtHead(head);
+    display(head);
+    
+
+    return 0;
 }
