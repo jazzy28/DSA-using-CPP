@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 //Inserting a node at the tail
 //node: data, ptr to the next node
@@ -31,16 +33,26 @@ void insertAtTail(node* &head, int val){ //traversal will be from head
     temp->next = n;
 }
 
-node* reverseRecursive(node* &head){
-    if(head == NULL || head->next == NULL){
-        return head;
+node* reversek(node* &head, int k){
+    node* prevptr = NULL;
+    node* currptr = head;
+    node* nextptr;
+    
+    int count = 0;
+    
+    while(currptr!=NULL && count<k){
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        
+        prevptr = currptr;
+        currptr = nextptr;
+        
+        count++;
     }
-    
-    node* newhead = reverseRecursive(head->next);
-    head->next->next = head;
-    head ->next = NULL;
-    
-    return newhead;
+    if(nextptr!=NULL){
+        head->next = reversek(nextptr,k);
+    }
+    return prevptr;
 }
 
 //display
@@ -63,10 +75,10 @@ int main()
     display(head);
     //deletion(head, 3);
     //deleteAtHead(head);
-    node* newhead = reverseRecursive(head);
+    int k=2;
+    node* newhead = reversek(head, k);
     display(newhead);
     
 
     return 0;
 }
-
