@@ -31,7 +31,7 @@ void insertAtTail(node* &head, int val){ //traversal will be from head
     temp->next = n;
 }
 
-node* reverse(node* &head){
+node* reverseRecursive(node* &head){
     
 }
 
