@@ -46,6 +46,23 @@ void makeCycle(node* &head, int pos){
     temp->next=startNode;
 }
 
+void removeCycle(node* &head){
+    node* slow = head;
+    node* fast = head;
+    
+    do{
+        slow=slow->next;
+        fast=fast->next->next;
+    }while(slow!=fast);
+    fast = head;
+    
+    while(slow->next!=fast->next){
+        slow=slow->next;
+        fast=fast->next;
+    }
+    slow->next=NULL;
+}
+
 bool detectCycle(node* &head){
     node* slow = head;
     node* fast = head;
@@ -87,8 +104,9 @@ int main()
     //node* newhead = reversek(head, k);
     makeCycle(head, 3);
     //detectCycle(head);
-    
-    detectCycle(head);
     cout<<detectCycle(head)<<endl;
+    removeCycle(head);
+    cout<<detectCycle(head)<<endl;
+    display(head);
     return 0;
 }
